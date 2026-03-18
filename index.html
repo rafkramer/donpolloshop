@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Pollo</title>
+  <meta name="description" content="Don Pollo. Merch. Calls. Salsa y picante y nos fuimos.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">DON POLLO</a>
+    <div class="nav-right">
+      <a href="#merch" class="nav-link">Merch</a>
+      <a href="#calls" class="nav-link">Calls</a>
+      <button class="nav-bag" id="cartBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-bag-n" id="cartBadge" data-count="0">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-tag">salsa y picante y nos fuimos</p>
+        <h1 class="hero-title">Don<br><span>Pollo</span></h1>
+        <div class="hero-btns">
+          <a href="#merch" class="btn btn-fill">Shop Merch</a>
+          <a href="#calls" class="btn btn-outline">Book a Call</a>
+        </div>
+      </div>
+      <div class="hero-vid">
+        <div class="vid-wrap">
+          <video src="assets/video/promo.mp4" playsinline autoplay muted loop></video>
+          <div class="vid-empty" id="vidEmpty">
+            <span>promo video</span>
+          </div>
+        </div>
+        <div class="vid-sticker">WAZAAAA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span>WAZAAAA</span><span>SALSA Y PICANTE</span><span>KING OF OHIO</span><span>LINGANGULI GULI GULI RACHA</span><span>UN VIDEO MAS MI GENTE</span><span>WAZAAAA</span><span>SALSA Y PICANTE</span><span>KING OF OHIO</span><span>LINGANGULI GULI GULI RACHA</span><span>UN VIDEO MAS MI GENTE</span>
+    </div>
+  </div>
+
+  <!-- ===================== MERCH ===================== -->
+  <section class="merch" id="merch">
+    <div class="contain">
+      <h2 class="sec-title">The Merch</h2>
+      <p class="sec-sub">rep don pollo or don't talk to me</p>
+      <div class="products" id="productsGrid">
+        <div class="products-loading">
+          <div class="ld"></div><div class="ld"></div><div class="ld"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CALLS ===================== -->
+  <section class="calls" id="calls">
+    <div class="contain">
+      <div class="calls-grid">
+        <div class="calls-left">
+          <div class="gif-wrap">
+            <img src="assets/images/donpollo-call.gif" alt="Don Pollo calling" class="gif">
+          </div>
+        </div>
+        <div class="calls-right">
+          <h2 class="sec-title">Call Don Pollo</h2>
+          <p class="calls-desc">1-on-1 video call. ask anything. WAZAAAA.</p>
+          <div class="call-tiers" id="callOptions"></div>
+          <p class="calls-note">you'll get a link to pick your time slot after purchase</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="foot">
+    <span class="foot-logo">DON POLLO</span>
+    <span class="foot-sub">salsa y picante y nos fuimos</span>
+  </footer>
+
+  <!-- ===================== CART DRAWER ===================== -->
+  <div class="overlay" id="cartOverlay"></div>
+  <aside class="drawer" id="cartDrawer">
+    <div class="drawer-top">
+      <h3>Your Bag</h3>
+      <button class="drawer-close" id="cartClose">&times;</button>
+    </div>
+    <div class="drawer-items" id="cartBody">
+      <p class="drawer-mt">nothing here yet</p>
+    </div>
+    <div class="drawer-bottom" id="cartBottom" style="display:none">
+      <div class="drawer-total"><span>Total</span><strong id="cartTotalPrice">$0</strong></div>
+      <button class="btn btn-fill btn-block" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- ===================== PRODUCT MODAL ===================== -->
+  <div class="mo-bg" id="modalBg"></div>
+  <div class="mo" id="modal">
+    <button class="mo-close" id="modalX">&times;</button>
+    <div class="mo-grid">
+      <div class="mo-imgs">
+        <img id="modalImg" src="" alt="">
+        <div class="mo-thumbs" id="modalThumbs"></div>
+      </div>
+      <div class="mo-info">
+        <h2 class="mo-name" id="modalName"></h2>
+        <p class="mo-price" id="modalPrice"></p>
+        <div class="mo-desc" id="modalHtml"></div>
+        <div class="mo-opts" id="modalOptions"></div>
+        <button class="btn btn-fill btn-block" id="modalAddBtn">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/fourthwall.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
