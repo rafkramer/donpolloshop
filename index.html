@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Don Pollo</title>
-  <meta name="description" content="Don Pollo. Merch. Calls. Salsa y picante y nos fuimos.">
+  <title>Don Pollo Shop — Official Merch & Calls</title>
+  <meta name="description" content="The official Don Pollo store. Merch drops and 1-on-1 video calls.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="#" class="nav-logo">DON POLLO</a>
+    <a href="#" class="nav-logo">DON POLLO SHOP</a>
     <div class="nav-right">
       <a href="#merch" class="nav-link">Merch</a>
       <a href="#calls" class="nav-link">Calls</a>
@@ -27,61 +27,96 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-tag">salsa y picante y nos fuimos</p>
-        <h1 class="hero-title">Don<br><span>Pollo</span></h1>
-        <div class="hero-btns">
-          <a href="#merch" class="btn btn-fill">Shop Merch</a>
-          <a href="#calls" class="btn btn-outline">Book a Call</a>
-        </div>
+    <div class="hero-content">
+      <p class="hero-tag">OFFICIAL STORE</p>
+      <h1 class="hero-title"><span>DON POLLO</span><br>SHOP</h1>
+      <p class="hero-sub">Merch drops and 1-on-1 video calls.<br>If you know, you know.</p>
+      <div class="hero-btns">
+        <a href="#merch" class="btn btn-accent">Shop Merch</a>
+        <a href="#calls" class="btn btn-ghost">Book a Call</a>
       </div>
-      <div class="hero-vid">
-        <div class="vid-wrap">
-          <video src="assets/video/promo.mp4" playsinline autoplay muted loop></video>
-          <div class="vid-empty" id="vidEmpty">
-            <span>promo video</span>
-          </div>
-        </div>
-        <div class="vid-sticker">WAZAAAA</div>
-      </div>
+    </div>
+    <div class="hero-video">
+      <video src="assets/video/promo.mp4" playsinline autoplay muted loop></video>
+      <div class="vid-empty" id="vidEmpty"><span>promo video</span></div>
     </div>
   </section>
 
   <!-- ===================== MARQUEE ===================== -->
   <div class="marquee">
     <div class="marquee-inner">
-      <span>WAZAAAA</span><span>SALSA Y PICANTE</span><span>KING OF OHIO</span><span>LINGANGULI GULI GULI RACHA</span><span>UN VIDEO MAS MI GENTE</span><span>WAZAAAA</span><span>SALSA Y PICANTE</span><span>KING OF OHIO</span><span>LINGANGULI GULI GULI RACHA</span><span>UN VIDEO MAS MI GENTE</span>
+      <span>FRESH MERCH</span><span>DON POLLO SHOP</span><span>BOOK A CALL</span><span>NEW DROPS</span><span>REP THE BRAND</span><span>FRESH MERCH</span><span>DON POLLO SHOP</span><span>BOOK A CALL</span><span>NEW DROPS</span><span>REP THE BRAND</span>
     </div>
   </div>
 
   <!-- ===================== MERCH ===================== -->
   <section class="merch" id="merch">
     <div class="contain">
-      <h2 class="sec-title">The Merch</h2>
-      <p class="sec-sub">rep don pollo or don't talk to me</p>
-      <div class="products" id="productsGrid">
-        <div class="products-loading">
-          <div class="ld"></div><div class="ld"></div><div class="ld"></div>
-        </div>
+      <h2 class="sec-title">Merch</h2>
+      <p class="sec-sub">Fresh drops. Limited runs. Don't sleep.</p>
+      <div class="products" id="productsGrid"></div>
+      <div class="show-more-wrap" id="showMoreWrap" style="display:none">
+        <button class="btn btn-outline btn-sm" id="showMoreBtn">Show More</button>
       </div>
     </div>
   </section>
 
   <!-- ===================== CALLS ===================== -->
   <section class="calls" id="calls">
+    <div class="calls-inner">
+      <div class="calls-gif-col">
+        <img src="assets/images/donpollo-call.gif" alt="Don Pollo calling" class="calls-gif">
+      </div>
+      <div class="calls-info-col">
+        <h2 class="calls-title">Call<br>Don Pollo</h2>
+        <p class="calls-desc">Private 1-on-1 video call. Talk about whatever&mdash;content, collabs, life, anything. Just you and Don Pollo, live.</p>
+        <div class="call-tiers" id="callOptions"></div>
+        <p class="calls-note">You'll get a booking link after purchase to pick your time slot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section class="reviews" id="reviews">
     <div class="contain">
-      <div class="calls-grid">
-        <div class="calls-left">
-          <div class="gif-wrap">
-            <img src="assets/images/donpollo-call.gif" alt="Don Pollo calling" class="gif">
-          </div>
+      <h2 class="sec-title">Reviews</h2>
+      <p class="sec-sub">Straight from the community.</p>
+      <div class="reviews-grid">
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"this tee goes stupid hard. wore it to class and everyone was asking where i got it"</p>
+          <p class="rev-name">@miguelito23</p>
+          <p class="rev-tag">Merch</p>
         </div>
-        <div class="calls-right">
-          <h2 class="sec-title">Call Don Pollo</h2>
-          <p class="calls-desc">1-on-1 video call. ask anything. WAZAAAA.</p>
-          <div class="call-tiers" id="callOptions"></div>
-          <p class="calls-note">you'll get a link to pick your time slot after purchase</p>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"did the 10 min call and don pollo is genuinely the coolest dude. actually listened and gave real advice"</p>
+          <p class="rev-name">@sarahvibes</p>
+          <p class="rev-tag">Video Call</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"shipping was fast. quality is way better than i expected for the price honestly"</p>
+          <p class="rev-name">@jayonthebeat</p>
+          <p class="rev-tag">Merch</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"booked a call for my birthday and it was the best gift i ever gave myself no cap"</p>
+          <p class="rev-name">@chrisflips</p>
+          <p class="rev-tag">Video Call</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"already ordered my second one. the navy colorway is fire"</p>
+          <p class="rev-name">@luna.mp4</p>
+          <p class="rev-tag">Merch</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text">"my friends didn't believe i talked to don pollo until i showed them the screenshot lmaooo"</p>
+          <p class="rev-name">@davidk99</p>
+          <p class="rev-tag">Video Call</p>
         </div>
       </div>
     </div>
@@ -89,8 +124,28 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="foot">
-    <span class="foot-logo">DON POLLO</span>
-    <span class="foot-sub">salsa y picante y nos fuimos</span>
+    <div class="contain">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <p class="foot-logo">DON POLLO SHOP</p>
+          <p class="foot-dim">The official store.</p>
+        </div>
+        <div class="foot-col">
+          <p class="foot-head">Support</p>
+          <a href="mailto:hello@donpolloshop.com" class="foot-link">hello@donpolloshop.com</a>
+        </div>
+        <div class="foot-col">
+          <p class="foot-head">Legal</p>
+          <a href="privacy.html" class="foot-link">Privacy Policy</a>
+          <a href="terms.html" class="foot-link">Terms of Service</a>
+          <a href="refunds.html" class="foot-link">Refund Policy</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2025 MINDMUSH LLC. All rights reserved.</span>
+        <a href="https://mindmush.com" class="foot-link" target="_blank" rel="noopener">mindmush.com</a>
+      </div>
+    </div>
   </footer>
 
   <!-- ===================== CART DRAWER ===================== -->
@@ -101,7 +156,7 @@
       <button class="drawer-close" id="cartClose">&times;</button>
     </div>
     <div class="drawer-items" id="cartBody">
-      <p class="drawer-mt">nothing here yet</p>
+      <p class="drawer-mt">Nothing here yet.</p>
     </div>
     <div class="drawer-bottom" id="cartBottom" style="display:none">
       <div class="drawer-total"><span>Total</span><strong id="cartTotalPrice">$0</strong></div>
