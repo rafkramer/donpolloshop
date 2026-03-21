@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Don Pollo Shop — Official Merch & Calls</title>
-  <meta name="description" content="The official Don Pollo store. Merch drops and 1-on-1 video calls.">
+  <title>Don Pollo Shop</title>
+  <meta name="description" content="Official Don Pollo merch and 1-on-1 video calls.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,159 +12,159 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
-    <a href="#" class="nav-logo">DON POLLO SHOP</a>
+    <a href="#" class="nav-logo"><img src="assets/images/crown.png" alt="" class="nav-crown">DON POLLO SHOP</a>
     <div class="nav-right">
-      <a href="#merch" class="nav-link">Merch</a>
-      <a href="#calls" class="nav-link">Calls</a>
+      <a href="#merch" class="nav-link" data-i18n="nav.shop">Shop</a>
+      <a href="#calls" class="nav-link" data-i18n="nav.calls">Calls</a>
+      <button class="lang-switch" id="langSwitch" data-lang="en" aria-label="Switch language">
+        <span class="lang-opt" data-lang="en">&#x1F1FA;&#x1F1F8;</span>
+        <span class="lang-opt" data-lang="es">&#x1F1EA;&#x1F1F8;</span>
+        <span class="lang-slider"></span>
+      </button>
       <button class="nav-bag" id="cartBtn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span class="nav-bag-n" id="cartBadge" data-count="0">0</span>
       </button>
     </div>
   </nav>
 
-  <!-- ===================== HERO ===================== -->
   <section class="hero">
-    <div class="hero-content">
-      <p class="hero-tag">OFFICIAL STORE</p>
-      <h1 class="hero-title"><span>DON POLLO</span><br>SHOP</h1>
-      <p class="hero-sub">Merch drops and 1-on-1 video calls.<br>If you know, you know.</p>
-      <div class="hero-btns">
-        <a href="#merch" class="btn btn-accent">Shop Merch</a>
-        <a href="#calls" class="btn btn-ghost">Book a Call</a>
+    <div class="contain hero-grid">
+      <div class="hero-text">
+        <div class="hero-crown-wrap">
+          <img src="assets/images/crown.png" alt="" class="hero-crown">
+          <h1 class="hero-title" data-i18n="hero.title">DON POLLO<br>SHOP</h1>
+        </div>
+        <p class="hero-sub" data-i18n="hero.sub">Official merch &amp; 1-on-1 video calls. You already know what it is.</p>
+        <div class="hero-btns">
+          <a href="#merch" class="btn btn-accent" data-i18n="hero.btn.shop">Shop</a>
+          <a href="#calls" class="btn btn-ghost" data-i18n="hero.btn.call">Book a Call</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-video">
-      <video src="assets/video/promo.mp4" playsinline autoplay muted loop></video>
-      <div class="vid-empty" id="vidEmpty"><span>promo video</span></div>
+      <div class="hero-video">
+        <img src="assets/images/video-placeholder.png" alt="Don Pollo" class="hero-video-img">
+      </div>
     </div>
   </section>
 
-  <!-- ===================== MARQUEE ===================== -->
   <div class="marquee">
     <div class="marquee-inner">
-      <span>FRESH MERCH</span><span>DON POLLO SHOP</span><span>BOOK A CALL</span><span>NEW DROPS</span><span>REP THE BRAND</span><span>FRESH MERCH</span><span>DON POLLO SHOP</span><span>BOOK A CALL</span><span>NEW DROPS</span><span>REP THE BRAND</span>
+      <span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.call">BOOK A CALL</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span><span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.call">BOOK A CALL</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span>
     </div>
   </div>
 
-  <!-- ===================== MERCH ===================== -->
   <section class="merch" id="merch">
     <div class="contain">
-      <h2 class="sec-title">Merch</h2>
-      <p class="sec-sub">Fresh drops. Limited runs. Don't sleep.</p>
+      <h2 class="sec-title" data-i18n="merch.title">Merch</h2>
       <div class="products" id="productsGrid"></div>
       <div class="show-more-wrap" id="showMoreWrap" style="display:none">
-        <button class="btn btn-outline btn-sm" id="showMoreBtn">Show More</button>
+        <button class="btn btn-outline btn-sm" id="showMoreBtn" data-i18n="merch.showMore">Show More</button>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CALLS ===================== -->
   <section class="calls" id="calls">
-    <div class="calls-inner">
-      <div class="calls-gif-col">
-        <img src="assets/images/donpollo-call.gif" alt="Don Pollo calling" class="calls-gif">
+    <div class="contain calls-layout">
+      <div class="calls-left">
+        <div class="calls-phone-stack">
+          <img src="assets/images/call-gif-1.gif" alt="Don Pollo calling" class="calls-gif calls-gif-main">
+          <img src="assets/images/call-gif-2.gif" alt="Don Pollo calling" class="calls-gif calls-gif-small">
+        </div>
       </div>
-      <div class="calls-info-col">
-        <h2 class="calls-title">Call<br>Don Pollo</h2>
-        <p class="calls-desc">Private 1-on-1 video call. Talk about whatever&mdash;content, collabs, life, anything. Just you and Don Pollo, live.</p>
+      <div class="calls-right">
+        <h2 class="calls-title" data-i18n="calls.title">Book a Call</h2>
+        <p class="calls-desc" data-i18n="calls.desc">1-on-1 video call with Don Pollo. Talk about whatever you want&mdash;content, collabs, life, or literally anything. Your call, your rules.</p>
         <div class="call-tiers" id="callOptions"></div>
-        <p class="calls-note">You'll get a booking link after purchase to pick your time slot.</p>
+        <p class="calls-note" data-i18n="calls.note">You'll get a booking link after purchase to pick your slot.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== REVIEWS ===================== -->
   <section class="reviews" id="reviews">
     <div class="contain">
-      <h2 class="sec-title">Reviews</h2>
-      <p class="sec-sub">Straight from the community.</p>
-      <div class="reviews-grid">
+      <h2 class="sec-title" data-i18n="reviews.title">What People Are Saying</h2>
+    </div>
+    <div class="reviews-scroll">
+      <div class="reviews-track">
         <div class="rev-card">
           <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"this tee goes stupid hard. wore it to class and everyone was asking where i got it"</p>
+          <p class="rev-text" data-i18n="rev.1">"Tee quality is actually crazy. Wore it to school and got compliments from people I don't even talk to."</p>
           <p class="rev-name">@miguelito23</p>
-          <p class="rev-tag">Merch</p>
         </div>
         <div class="rev-card">
           <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"did the 10 min call and don pollo is genuinely the coolest dude. actually listened and gave real advice"</p>
+          <p class="rev-text" data-i18n="rev.2">"Did the 10 min call and Don Pollo actually gave real advice. Lowkey life changing."</p>
           <p class="rev-name">@sarahvibes</p>
-          <p class="rev-tag">Video Call</p>
         </div>
         <div class="rev-card">
           <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"shipping was fast. quality is way better than i expected for the price honestly"</p>
+          <p class="rev-text" data-i18n="rev.3">"Shipping was fast. The fit is perfect. Already wearing it right now typing this review."</p>
           <p class="rev-name">@jayonthebeat</p>
-          <p class="rev-tag">Merch</p>
         </div>
         <div class="rev-card">
           <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"booked a call for my birthday and it was the best gift i ever gave myself no cap"</p>
-          <p class="rev-name">@chrisflips</p>
-          <p class="rev-tag">Video Call</p>
-        </div>
-        <div class="rev-card">
-          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"already ordered my second one. the navy colorway is fire"</p>
-          <p class="rev-name">@luna.mp4</p>
-          <p class="rev-tag">Merch</p>
-        </div>
-        <div class="rev-card">
-          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rev-text">"my friends didn't believe i talked to don pollo until i showed them the screenshot lmaooo"</p>
+          <p class="rev-text" data-i18n="rev.4">"Showed my friends the call screenshot and now they all want one."</p>
           <p class="rev-name">@davidk99</p>
-          <p class="rev-tag">Video Call</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text" data-i18n="rev.1">"Tee quality is actually crazy. Wore it to school and got compliments from people I don't even talk to."</p>
+          <p class="rev-name">@miguelito23</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text" data-i18n="rev.2">"Did the 10 min call and Don Pollo actually gave real advice. Lowkey life changing."</p>
+          <p class="rev-name">@sarahvibes</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text" data-i18n="rev.3">"Shipping was fast. The fit is perfect. Already wearing it right now typing this review."</p>
+          <p class="rev-name">@jayonthebeat</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rev-text" data-i18n="rev.4">"Showed my friends the call screenshot and now they all want one."</p>
+          <p class="rev-name">@davidk99</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer class="foot">
     <div class="contain">
-      <div class="foot-grid">
-        <div class="foot-col">
-          <p class="foot-logo">DON POLLO SHOP</p>
-          <p class="foot-dim">The official store.</p>
-        </div>
-        <div class="foot-col">
-          <p class="foot-head">Support</p>
-          <a href="mailto:hello@donpolloshop.com" class="foot-link">hello@donpolloshop.com</a>
-        </div>
-        <div class="foot-col">
-          <p class="foot-head">Legal</p>
-          <a href="privacy.html" class="foot-link">Privacy Policy</a>
-          <a href="terms.html" class="foot-link">Terms of Service</a>
-          <a href="refunds.html" class="foot-link">Refund Policy</a>
-        </div>
+      <div class="foot-top">
+        <span class="foot-name">DON POLLO SHOP</span>
+        <span>&middot;</span>
+        <a href="mailto:hello@donpolloshop.com" class="foot-link">hello@donpolloshop.com</a>
       </div>
-      <div class="foot-bottom">
-        <span>&copy; 2025 MINDMUSH LLC. All rights reserved.</span>
-        <a href="https://mindmush.com" class="foot-link" target="_blank" rel="noopener">mindmush.com</a>
+      <div class="foot-legal">
+        <a href="terms.html" class="foot-link" data-i18n="footer.terms">Terms of Service</a>
+        <span>&middot;</span>
+        <a href="privacy.html" class="foot-link" data-i18n="footer.privacy">Privacy Policy</a>
+        <span>&middot;</span>
+        <a href="refunds.html" class="foot-link" data-i18n="footer.refund">Refund Policy</a>
+        <span>&middot;</span>
+        <span data-i18n="footer.copy">&copy; 2025 Don Pollo Shop. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <!-- ===================== CART DRAWER ===================== -->
   <div class="overlay" id="cartOverlay"></div>
   <aside class="drawer" id="cartDrawer">
     <div class="drawer-top">
-      <h3>Your Bag</h3>
+      <h3 data-i18n="cart.title">Your Bag</h3>
       <button class="drawer-close" id="cartClose">&times;</button>
     </div>
     <div class="drawer-items" id="cartBody">
-      <p class="drawer-mt">Nothing here yet.</p>
+      <p class="drawer-mt" data-i18n="cart.empty">Nothing here yet.</p>
     </div>
     <div class="drawer-bottom" id="cartBottom" style="display:none">
-      <div class="drawer-total"><span>Total</span><strong id="cartTotalPrice">$0</strong></div>
-      <button class="btn btn-fill btn-block" id="checkoutBtn">Checkout</button>
+      <div class="drawer-total"><span data-i18n="cart.total">Total</span><strong id="cartTotalPrice">$0</strong></div>
+      <button class="btn btn-fill btn-block" id="checkoutBtn" data-i18n="cart.checkout">Checkout</button>
     </div>
   </aside>
 
-  <!-- ===================== PRODUCT MODAL ===================== -->
   <div class="mo-bg" id="modalBg"></div>
   <div class="mo" id="modal">
     <button class="mo-close" id="modalX">&times;</button>
@@ -178,7 +178,7 @@
         <p class="mo-price" id="modalPrice"></p>
         <div class="mo-desc" id="modalHtml"></div>
         <div class="mo-opts" id="modalOptions"></div>
-        <button class="btn btn-fill btn-block" id="modalAddBtn">Add to Bag</button>
+        <button class="btn btn-fill btn-block" id="modalAddBtn" data-i18n="modal.add">Add to Bag</button>
       </div>
     </div>
   </div>

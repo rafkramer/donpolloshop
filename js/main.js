@@ -1,6 +1,159 @@
 /* ============================================
    DON POLLO SHOP — UI
    ============================================ */
+
+// =====================
+// I18N
+// =====================
+const I18N = {
+  en: {
+    'nav.shop': 'Shop',
+    'nav.calls': 'Calls',
+    'hero.title': 'DON POLLO<br>SHOP',
+    'hero.sub': 'Official merch & 1-on-1 video calls. You already know what it is.',
+    'hero.btn.shop': 'Shop',
+    'hero.btn.call': 'Book a Call',
+    'marquee.merch': 'FRESH MERCH',
+    'marquee.shop': 'DON POLLO SHOP',
+    'marquee.call': 'BOOK A CALL',
+    'marquee.drops': 'NEW DROPS',
+    'marquee.rep': 'REP THE BRAND',
+    'merch.title': 'Merch',
+    'merch.showMore': 'Show More',
+    'merch.showLess': 'Show Less',
+    'calls.title': 'Book a Call',
+    'calls.desc': '1-on-1 video call with Don Pollo. Talk about whatever you want\u2014content, collabs, life, or literally anything. Your call, your rules.',
+    'calls.note': 'You\u2019ll get a booking link after purchase to pick your slot.',
+    'calls.tag': 'Most booked',
+    'calls.book': 'Book',
+    'calls.videoCall': 'video call',
+    'reviews.title': 'What People Are Saying',
+    'footer.terms': 'Terms of Service',
+    'footer.privacy': 'Privacy Policy',
+    'footer.refund': 'Refund Policy',
+    'footer.copy': '\u00A9 2025 Don Pollo Shop. All rights reserved.',
+    'cart.title': 'Your Bag',
+    'cart.empty': 'Nothing here yet.',
+    'cart.total': 'Total',
+    'cart.checkout': 'Checkout',
+    'cart.remove': 'remove',
+    'modal.add': 'Add to Bag',
+    'modal.adding': '...',
+    'modal.failed': 'Failed \u2014 try again',
+    'opt.color': 'Color',
+    'opt.size': 'Size',
+    'rev.1': '"Tee quality is actually crazy. Wore it to school and got compliments from people I don\u2019t even talk to."',
+    'rev.2': '"Did the 10 min call and Don Pollo actually gave real advice. Lowkey life changing."',
+    'rev.3': '"Shipping was fast. The fit is perfect. Already wearing it right now typing this review."',
+    'rev.4': '"Showed my friends the call screenshot and now they all want one."',
+  },
+  es: {
+    'nav.shop': 'Tienda',
+    'nav.calls': 'Llamadas',
+    'hero.title': 'DON POLLO<br>SHOP',
+    'hero.sub': 'Merch oficial y videollamadas 1 a 1. Ya sabes de qu\u00E9 va.',
+    'hero.btn.shop': 'Tienda',
+    'hero.btn.call': 'Reserva una Llamada',
+    'marquee.merch': 'MERCH NUEVO',
+    'marquee.shop': 'DON POLLO SHOP',
+    'marquee.call': 'RESERVA UNA LLAMADA',
+    'marquee.drops': 'NUEVOS DROPS',
+    'marquee.rep': 'REP LA MARCA',
+    'merch.title': 'Merch',
+    'merch.showMore': 'Ver M\u00E1s',
+    'merch.showLess': 'Ver Menos',
+    'calls.title': 'Reserva una Llamada',
+    'calls.desc': 'Videollamada 1 a 1 con Don Pollo. Habla de lo que quieras\u2014contenido, collabs, la vida, o literalmente lo que sea. Tu llamada, tus reglas.',
+    'calls.note': 'Recibir\u00E1s un link de reserva despu\u00E9s de la compra para elegir tu horario.',
+    'calls.tag': 'M\u00E1s reservado',
+    'calls.book': 'Reservar',
+    'calls.videoCall': 'videollamada',
+    'reviews.title': 'Lo Que Dice la Gente',
+    'footer.terms': 'T\u00E9rminos de Servicio',
+    'footer.privacy': 'Pol\u00EDtica de Privacidad',
+    'footer.refund': 'Pol\u00EDtica de Reembolso',
+    'footer.copy': '\u00A9 2025 Don Pollo Shop. Todos los derechos reservados.',
+    'cart.title': 'Tu Bolsa',
+    'cart.empty': 'Nada aqu\u00ED todav\u00EDa.',
+    'cart.total': 'Total',
+    'cart.checkout': 'Pagar',
+    'cart.remove': 'quitar',
+    'modal.add': 'A\u00F1adir a la Bolsa',
+    'modal.adding': '...',
+    'modal.failed': 'Fall\u00F3 \u2014 intenta de nuevo',
+    'opt.color': 'Color',
+    'opt.size': 'Talla',
+    'rev.1': '"\u00A1La calidad de la camiseta es una locura! La us\u00E9 en la escuela y me llovieron cumplidos de gente que ni me habla."',
+    'rev.2': '"Hice la llamada de 10 min y Don Pollo dio consejos de verdad. Lowkey me cambi\u00F3 la vida."',
+    'rev.3': '"El env\u00EDo fue r\u00E1pido. La talla es perfecta. Ya la tengo puesta mientras escribo esta rese\u00F1a."',
+    'rev.4': '"Les ense\u00F1\u00E9 a mis amigos la captura de la llamada y ahora todos quieren una."',
+  }
+};
+
+let currentLang = 'en';
+
+function detectLanguage() {
+  const stored = localStorage.getItem('dp_lang');
+  if (stored && I18N[stored]) return stored;
+  const nav = (navigator.language || '').toLowerCase();
+  return nav.startsWith('es') ? 'es' : 'en';
+}
+
+function t(key) {
+  return I18N[currentLang]?.[key] || I18N.en[key] || key;
+}
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('dp_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = t(key);
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = val;
+    } else if (val.includes('<br>') || val.includes('<')) {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+  const sw = document.getElementById('langSwitch');
+  if (sw) sw.dataset.lang = lang;
+  renderCart();
+  updateCallTierText();
+}
+
+function updateCallTierText() {
+  document.querySelectorAll('.call-tier-tag').forEach(el => {
+    el.textContent = t('calls.tag');
+  });
+  document.querySelectorAll('.tier-buy').forEach(btn => {
+    if (!btn.disabled) btn.textContent = t('calls.book');
+  });
+  const calls = window.DP?.calls || [];
+  document.querySelectorAll('.call-tier-name').forEach((el, idx) => {
+    if (calls[idx]) {
+      el.textContent = `${calls[idx].label} ${t('calls.videoCall')}`;
+    }
+  });
+}
+
+function setupI18n() {
+  currentLang = detectLanguage();
+  applyLanguage(currentLang);
+  const sw = document.getElementById('langSwitch');
+  if (sw) {
+    sw.addEventListener('click', () => {
+      const newLang = currentLang === 'en' ? 'es' : 'en';
+      applyLanguage(newLang);
+    });
+  }
+}
+
+// =====================
+// CORE
+// =====================
 let products = [];
 let cart = null;
 let selVariant = null;
@@ -34,6 +187,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupModal();
   setupCalls();
   setupShowMore();
+  setupI18n();
   await loadProducts();
   await refreshCart();
 });
@@ -43,10 +197,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 // =====================
 function setupVideo() {
   const vid = $('video');
+  const container = vid?.closest('.hero-video');
   const empty = $('#vidEmpty');
-  if (!vid || !empty) return;
-  vid.addEventListener('loadeddata', () => { empty.style.display = 'none'; });
-  vid.addEventListener('error', () => { empty.style.display = ''; });
+  if (!vid || !container) return;
+  vid.addEventListener('loadeddata', () => { if (empty) empty.style.display = 'none'; });
+  vid.addEventListener('error', () => { container.style.display = 'none'; });
 }
 
 // =====================
@@ -75,7 +230,7 @@ function renderAPIProducts(items) {
     const img = p.images?.[0];
     const price = p.variants?.[0]?.unitPrice;
     const card = document.createElement('div');
-    card.className = 'p-card' + (i >= 3 ? ' hidden' : '');
+    card.className = 'p-card';
     card.innerHTML = `
       <div class="p-card-img">
         ${img ? `<img src="${img.url}" alt="${p.name}" loading="lazy">` : `<div class="p-card-ph" style="background:#eee">${teeSVG('#999')}<span>DON POLLO</span></div>`}
@@ -87,7 +242,27 @@ function renderAPIProducts(items) {
     card.addEventListener('click', () => openModal(p));
     grid.appendChild(card);
   });
-  if (items.length > 3) $('#showMoreWrap').style.display = '';
+  const need = Math.max(0, 6 - items.length);
+  PLACEHOLDERS.slice(0, need).forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'p-card';
+    card.innerHTML = `
+      <div class="p-card-img">
+        <div class="p-card-ph" style="background:${p.bg}">
+          ${teeSVG(p.fg)}
+          <span style="color:${p.fg}">DON POLLO</span>
+        </div>
+      </div>
+      <div class="p-card-body">
+        <p class="p-card-name">${p.name}</p>
+        <p class="p-card-price">$${p.price}</p>
+      </div>`;
+    grid.appendChild(card);
+  });
+  grid.querySelectorAll('.p-card').forEach((c, i) => {
+    if (i >= 3) c.classList.add('hidden');
+  });
+  if (grid.children.length > 3) $('#showMoreWrap').style.display = '';
 }
 
 function renderPlaceholders() {
@@ -116,12 +291,13 @@ function setupShowMore() {
   const btn = $('#showMoreBtn');
   btn.addEventListener('click', () => {
     showingAll = !showingAll;
+    const key = showingAll ? 'merch.showLess' : 'merch.showMore';
+    btn.dataset.i18n = key;
+    btn.textContent = t(key);
     if (showingAll) {
       $$('.p-card').forEach(c => c.classList.remove('hidden'));
-      btn.textContent = 'Show Less';
     } else {
       $$('.p-card').forEach((c, i) => { if (i >= 3) c.classList.add('hidden'); });
-      btn.textContent = 'Show More';
     }
   });
 }
@@ -187,7 +363,7 @@ function buildVariants(p) {
   });
   if (colors.size > 0) {
     const g = document.createElement('div'); g.className = 'opt-group';
-    g.innerHTML = '<p class="opt-label">Color</p>';
+    g.innerHTML = `<p class="opt-label">${t('opt.color')}</p>`;
     const row = document.createElement('div'); row.className = 'opt-row';
     colors.forEach((sw, name) => {
       const b = document.createElement('button');
@@ -200,7 +376,7 @@ function buildVariants(p) {
   }
   if (sizes.length > 0) {
     const g = document.createElement('div'); g.className = 'opt-group';
-    g.innerHTML = '<p class="opt-label">Size</p>';
+    g.innerHTML = `<p class="opt-label">${t('opt.size')}</p>`;
     const row = document.createElement('div'); row.className = 'opt-row';
     sizes.forEach(name => {
       const b = document.createElement('button');
@@ -234,15 +410,15 @@ async function addFromModal() {
   const vid = selVariant || curProduct?.variants?.[0]?.id;
   if (!vid) return;
   const btn = $('#modalAddBtn');
-  btn.textContent = '...'; btn.disabled = true;
+  btn.textContent = t('modal.adding'); btn.disabled = true;
   try {
     await FW.addToCart(vid);
     await refreshCart();
     closeModal(); openCart();
   } catch(e) {
-    console.error(e); btn.textContent = 'Failed — try again';
+    console.error(e); btn.textContent = t('modal.failed');
   } finally {
-    setTimeout(() => { btn.textContent = 'Add to Bag'; btn.disabled = false; }, 1200);
+    setTimeout(() => { btn.textContent = t('modal.add'); btn.disabled = false; }, 1200);
   }
 }
 
@@ -270,7 +446,7 @@ function renderCart() {
   const badge = $('#cartBadge');
   badge.textContent = count; badge.dataset.count = count;
   if (!items.length) {
-    $('#cartBody').innerHTML = '<p class="drawer-mt">Nothing here yet.</p>';
+    $('#cartBody').innerHTML = `<p class="drawer-mt">${t('cart.empty')}</p>`;
     $('#cartBottom').style.display = 'none'; return;
   }
   $('#cartBottom').style.display = '';
@@ -288,7 +464,7 @@ function renderCart() {
         <p class="ci-meta">${v.attributes?.description || ''}${item.quantity > 1 ? ' x' + item.quantity : ''}</p>
         <div class="ci-row">
           <span class="ci-price">$${line.toFixed(2)}</span>
-          <button class="ci-rm" data-vid="${v.id}">remove</button>
+          <button class="ci-rm" data-vid="${v.id}">${t('cart.remove')}</button>
         </div>
       </div>`;
     el.querySelector('.ci-rm').addEventListener('click', async e => {
@@ -309,12 +485,12 @@ function setupCalls() {
   calls.forEach((call, i) => {
     const tier = document.createElement('div'); tier.className = 'call-tier';
     tier.innerHTML = `
-      ${i === 1 ? '<span class="call-tier-tag">Most booked</span>' : ''}
+      ${i === 1 ? `<span class="call-tier-tag">${t('calls.tag')}</span>` : ''}
       <div>
-        <p class="call-tier-name">${call.label} video call</p>
+        <p class="call-tier-name">${call.label} ${t('calls.videoCall')}</p>
         <p class="call-tier-price">${call.price || ''}</p>
       </div>
-      <button class="btn btn-accent btn-sm tier-buy">Book</button>`;
+      <button class="btn btn-accent btn-sm tier-buy">${t('calls.book')}</button>`;
     wrap.appendChild(tier);
     const btn = tier.querySelector('.tier-buy');
     FW.getProduct(call.slug).then(p => {
@@ -322,10 +498,10 @@ function setupCalls() {
       if (v) {
         tier.querySelector('.call-tier-price').textContent = fmt(v.unitPrice);
         btn.addEventListener('click', async () => {
-          btn.textContent = '...'; btn.disabled = true;
+          btn.textContent = t('modal.adding'); btn.disabled = true;
           try { await FW.addToCart(v.id); await refreshCart(); openCart(); }
           catch(e) { console.error(e); }
-          btn.textContent = 'Book'; btn.disabled = false;
+          btn.textContent = t('calls.book'); btn.disabled = false;
         });
       }
     }).catch(() => { btn.style.opacity = '.4'; btn.style.cursor = 'default'; });
@@ -343,3 +519,20 @@ document.addEventListener('click', e => {
   const t = document.querySelector(a.getAttribute('href'));
   if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
 });
+
+// =====================
+// REVIEW SCROLLER
+// =====================
+(function initReviewScroll() {
+  const track = document.querySelector('.reviews-track');
+  if (!track) return;
+  const cards = track.children;
+  if (!cards.length) return;
+  requestAnimationFrame(() => {
+    const half = track.scrollWidth / 2;
+    const style = document.createElement('style');
+    style.textContent = `@keyframes rev-scroll { from { transform: translateX(0); } to { transform: translateX(-${half}px); } }`;
+    document.head.appendChild(style);
+    track.style.animation = 'rev-scroll 25s linear infinite';
+  });
+})();
