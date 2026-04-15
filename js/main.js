@@ -524,23 +524,22 @@ document.addEventListener('click', e => {
 // =====================
 function initScroller(track, speed) {
   if (!track || !track.children.length) return;
-  requestAnimationFrame(() => {
-    const origItems = Array.from(track.children);
-    const viewW = track.parentElement.offsetWidth;
-    // Clone items until we have at least 2x the viewport width
-    while (track.scrollWidth < viewW * 3) {
-      origItems.forEach(item => track.appendChild(item.cloneNode(true)));
-    }
-    const half = track.scrollWidth / 2;
-    const name = 'scroll-' + Math.random().toString(36).slice(2, 8);
-    const style = document.createElement('style');
-    style.textContent = `@keyframes ${name} { from { transform: translateX(0); } to { transform: translateX(-${half}px); } }`;
-    document.head.appendChild(style);
-    track.style.animation = `${name} ${speed}s linear infinite`;
-  });
+  const origItems = Array.from(track.children);
+  const viewW = window.innerWidth;
+  let guard = 0;
+  while (track.scrollWidth < viewW * 3 && guard < 30) {
+    origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+    guard++;
+  }
+  const half = track.scrollWidth / 2;
+  const name = 'scroll-' + Math.random().toString(36).slice(2, 8);
+  const style = document.createElement('style');
+  style.textContent = `@keyframes ${name} { from { transform: translateX(0); } to { transform: translateX(-${half}px); } }`;
+  document.head.appendChild(style);
+  track.style.animation = `${name} ${speed}s linear infinite`;
 }
 
-(function initScrollers() {
+document.addEventListener('DOMContentLoaded', () => {
   initScroller(document.querySelector('#marqueeTrack'), 18);
   initScroller(document.querySelector('.reviews-track'), 30);
-})();
+});
