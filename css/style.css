@@ -56,6 +56,8 @@ img { max-width: 100%; display: block; }
 .btn-outline:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); box-shadow: 3px 3px 0 var(--accent); }
 .btn-sm { padding: 10px 20px; font-size: .82rem; }
 .btn-block { width: 100%; }
+.btn-dim { opacity: .55; border-style: dashed; }
+.btn-dim:hover { opacity: .8; }
 
 /* ============ NAV ============ */
 .nav {
@@ -244,6 +246,18 @@ img { max-width: 100%; display: block; }
   50% { transform: rotate(3deg) translate(0, 0); }
 }
 .calls-right { text-align: left; }
+.calls-badge {
+  display: inline-block;
+  background: var(--accent); color: #fff;
+  font-size: .6rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 2px; padding: 5px 14px; border-radius: 8px;
+  margin-bottom: 14px;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .7; }
+}
 .calls-title { font-family: var(--display); font-size: 1.8rem; margin-bottom: 14px; }
 .calls-desc {
   font-size: .92rem; color: rgba(255,255,255,.5); line-height: 1.65;
@@ -277,6 +291,29 @@ img { max-width: 100%; display: block; }
 .calls .btn-accent { border-color: transparent; }
 .calls .btn-accent:hover { box-shadow: 0 6px 20px rgba(200,153,46,.4); }
 .calls-note { font-size: .78rem; color: rgba(255,255,255,.3); }
+
+/* Disabled call tiers (coming soon) */
+.call-tier-disabled {
+  opacity: .5;
+  pointer-events: none;
+  filter: grayscale(.3);
+}
+.call-tier-disabled .tier-buy {
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.5);
+  cursor: default;
+  border-color: transparent;
+}
+.call-tier-disabled .tier-buy:hover {
+  transform: none;
+  box-shadow: none;
+}
+.calls-coming-soon {
+  font-size: .85rem;
+  color: rgba(255,255,255,.45);
+  font-weight: 600;
+  margin-top: 4px;
+}
 
 /* ============ REVIEWS ============ */
 .reviews { padding: 72px 0 80px; overflow: hidden; }
@@ -454,6 +491,7 @@ img { max-width: 100%; display: block; }
   .products { grid-template-columns: repeat(2, 1fr); }
   .calls-layout { grid-template-columns: 1fr; gap: 40px; }
   .calls-right { text-align: center; }
+  .calls-badge { margin-left: auto; margin-right: auto; }
   .calls-desc { margin-left: auto; margin-right: auto; }
   .call-tiers { justify-content: center; margin-left: auto; margin-right: auto; }
   .calls-phone-stack { max-width: 340px; margin: 0 auto; }

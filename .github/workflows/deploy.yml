@@ -24,7 +24,7 @@ jobs:
 
       - name: Inject config
         run: |
-          sed 's/FOURTHWALL_TOKEN_HERE/${{ secrets.FOURTHWALL_TOKEN }}/' js/config.example.js > js/config.js
+          sed "s/FOURTHWALL_TOKEN_HERE/${{ secrets.FOURTHWALL_TOKEN }}/" js/config.example.js > js/config.js
 
       - uses: actions/configure-pages@v4
 

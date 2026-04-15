@@ -10,23 +10,26 @@ const I18N = {
     'nav.shop': 'Shop',
     'nav.calls': 'Calls',
     'hero.title': 'DON POLLO<br>SHOP',
-    'hero.sub': 'Official merch & 1-on-1 video calls. You already know what it is.',
-    'hero.btn.shop': 'Shop',
-    'hero.btn.call': 'Book a Call',
+    'hero.sub': 'Official merch drops are here. Rep the brand, look fire.',
+    'hero.btn.shop': 'Shop Now',
+    'hero.btn.call': 'Calls \u2014 Coming Soon',
     'marquee.merch': 'FRESH MERCH',
     'marquee.shop': 'DON POLLO SHOP',
-    'marquee.call': 'BOOK A CALL',
+    'marquee.call': 'CALLS COMING SOON',
     'marquee.drops': 'NEW DROPS',
     'marquee.rep': 'REP THE BRAND',
     'merch.title': 'Merch',
     'merch.showMore': 'Show More',
     'merch.showLess': 'Show Less',
-    'calls.title': 'Book a Call',
+    'calls.title': '1-on-1 Calls',
     'calls.desc': '1-on-1 video call with Don Pollo. Talk about whatever you want\u2014content, collabs, life, or literally anything. Your call, your rules.',
+    'calls.comingSoon': 'Coming Soon',
+    'calls.comingSoonNote': 'Calls are launching soon. Stay tuned\u2014you\u2019ll be the first to know.',
     'calls.note': 'You\u2019ll get a booking link after purchase to pick your slot.',
     'calls.tag': 'Most booked',
     'calls.book': 'Book',
     'calls.videoCall': 'video call',
+    'calls.unavailable': 'Coming Soon',
     'reviews.title': 'What People Are Saying',
     'footer.terms': 'Terms of Service',
     'footer.privacy': 'Privacy Policy',
@@ -43,31 +46,34 @@ const I18N = {
     'opt.color': 'Color',
     'opt.size': 'Size',
     'rev.1': '"Tee quality is actually crazy. Wore it to school and got compliments from people I don\u2019t even talk to."',
-    'rev.2': '"Did the 10 min call and Don Pollo actually gave real advice. Lowkey life changing."',
-    'rev.3': '"Shipping was fast. The fit is perfect. Already wearing it right now typing this review."',
-    'rev.4': '"Showed my friends the call screenshot and now they all want one."',
+    'rev.2': '"Shipping was fast. The fit is perfect. Already wearing it right now typing this review."',
+    'rev.3': '"The designs go hard. My whole friend group copped one after seeing mine."',
+    'rev.4': '"Don Pollo merch hits different. Best quality I\u2019ve bought online fr."',
   },
   es: {
     'nav.shop': 'Tienda',
     'nav.calls': 'Llamadas',
     'hero.title': 'DON POLLO<br>SHOP',
-    'hero.sub': 'Merch oficial y videollamadas 1 a 1. Ya sabes de qu\u00E9 va.',
-    'hero.btn.shop': 'Tienda',
-    'hero.btn.call': 'Reserva una Llamada',
+    'hero.sub': 'Los drops de merch oficial ya est\u00E1n aqu\u00ED. Rep la marca, verse fire.',
+    'hero.btn.shop': 'Comprar',
+    'hero.btn.call': 'Llamadas \u2014 Pr\u00F3ximamente',
     'marquee.merch': 'MERCH NUEVO',
     'marquee.shop': 'DON POLLO SHOP',
-    'marquee.call': 'RESERVA UNA LLAMADA',
+    'marquee.call': 'LLAMADAS PR\u00D3XIMAMENTE',
     'marquee.drops': 'NUEVOS DROPS',
     'marquee.rep': 'REP LA MARCA',
     'merch.title': 'Merch',
     'merch.showMore': 'Ver M\u00E1s',
     'merch.showLess': 'Ver Menos',
-    'calls.title': 'Reserva una Llamada',
+    'calls.title': 'Llamadas 1 a 1',
     'calls.desc': 'Videollamada 1 a 1 con Don Pollo. Habla de lo que quieras\u2014contenido, collabs, la vida, o literalmente lo que sea. Tu llamada, tus reglas.',
+    'calls.comingSoon': 'Pr\u00F3ximamente',
+    'calls.comingSoonNote': 'Las llamadas llegan pronto. Qu\u00E9date pendiente\u2014ser\u00E1s el primero en saberlo.',
     'calls.note': 'Recibir\u00E1s un link de reserva despu\u00E9s de la compra para elegir tu horario.',
     'calls.tag': 'M\u00E1s reservado',
     'calls.book': 'Reservar',
     'calls.videoCall': 'videollamada',
+    'calls.unavailable': 'Pr\u00F3ximamente',
     'reviews.title': 'Lo Que Dice la Gente',
     'footer.terms': 'T\u00E9rminos de Servicio',
     'footer.privacy': 'Pol\u00EDtica de Privacidad',
@@ -84,9 +90,9 @@ const I18N = {
     'opt.color': 'Color',
     'opt.size': 'Talla',
     'rev.1': '"\u00A1La calidad de la camiseta es una locura! La us\u00E9 en la escuela y me llovieron cumplidos de gente que ni me habla."',
-    'rev.2': '"Hice la llamada de 10 min y Don Pollo dio consejos de verdad. Lowkey me cambi\u00F3 la vida."',
-    'rev.3': '"El env\u00EDo fue r\u00E1pido. La talla es perfecta. Ya la tengo puesta mientras escribo esta rese\u00F1a."',
-    'rev.4': '"Les ense\u00F1\u00E9 a mis amigos la captura de la llamada y ahora todos quieren una."',
+    'rev.2': '"El env\u00EDo fue r\u00E1pido. La talla es perfecta. Ya la tengo puesta mientras escribo esta rese\u00F1a."',
+    'rev.3': '"Los dise\u00F1os son brutales. Todo mi grupo se compr\u00F3 una despu\u00E9s de ver la m\u00EDa."',
+    'rev.4': '"El merch de Don Pollo pega diferente. La mejor calidad que he comprado online."',
   }
 };
 
@@ -129,7 +135,8 @@ function updateCallTierText() {
     el.textContent = t('calls.tag');
   });
   document.querySelectorAll('.tier-buy').forEach(btn => {
-    if (!btn.disabled) btn.textContent = t('calls.book');
+    btn.textContent = t('calls.unavailable');
+    btn.disabled = true;
   });
   const calls = window.DP?.calls || [];
   document.querySelectorAll('.call-tier-name').forEach((el, idx) => {
@@ -137,6 +144,8 @@ function updateCallTierText() {
       el.textContent = `${calls[idx].label} ${t('calls.videoCall')}`;
     }
   });
+  const comingSoon = document.querySelector('.calls-coming-soon');
+  if (comingSoon) comingSoon.textContent = t('calls.comingSoonNote');
 }
 
 function setupI18n() {
@@ -163,15 +172,15 @@ let showingAll = false;
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
-const COLORS = ['#1a1816','#f0ece6','#c62828','#1b3a5c','#333','#e84416'];
+const COLORS = ['#c62828','#1a1816','#f0ece6','#e84416','#1b3a5c','#333'];
 
 const PLACEHOLDERS = [
-  { name: 'Classic Tee — Black', price: 30, bg: COLORS[0], fg: '#fff' },
-  { name: 'Classic Tee — Cream', price: 30, bg: COLORS[1], fg: '#1a1816' },
-  { name: 'Don Pollo Tee — Red', price: 32, bg: COLORS[2], fg: '#fff' },
-  { name: 'Logo Tee — Navy', price: 30, bg: COLORS[3], fg: '#fff' },
-  { name: 'Don Pollo Tee — Charcoal', price: 30, bg: COLORS[4], fg: '#aaa' },
-  { name: 'Don Pollo Tee — Orange', price: 32, bg: COLORS[5], fg: '#fff' },
+  { name: 'Don Pollo Tee — Red', price: 32, bg: '#c62828', fg: '#fff' },
+  { name: 'Classic Tee — Black', price: 30, bg: '#1a1816', fg: '#fff' },
+  { name: 'Classic Tee — Cream', price: 30, bg: '#f0ece6', fg: '#1a1816' },
+  { name: 'Don Pollo Tee — Orange', price: 32, bg: '#e84416', fg: '#fff' },
+  { name: 'Logo Tee — Navy', price: 30, bg: '#1b3a5c', fg: '#fff' },
+  { name: 'Don Pollo Tee — Charcoal', price: 30, bg: '#333', fg: '#aaa' },
 ];
 
 function teeSVG(fg) {
@@ -207,14 +216,30 @@ function setupVideo() {
 // =====================
 // PRODUCTS
 // =====================
+function sortProducts(items) {
+  const order = window.DP?.productOrder || [];
+  if (!order.length) return items;
+  return [...items].sort((a, b) => {
+    const ai = order.indexOf(a.slug);
+    const bi = order.indexOf(b.slug);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return 0;
+  });
+}
+
 async function loadProducts() {
   try {
     const apiProducts = await FW.getProducts();
     const callSlugs = (window.DP?.calls || []).map(c => c.slug);
-    const merch = apiProducts.filter(p => !callSlugs.includes(p.slug));
+    const excludeSlugs = window.DP?.excludeSlugs || [];
+    const merch = apiProducts.filter(p =>
+      !callSlugs.includes(p.slug) && !excludeSlugs.includes(p.slug)
+    );
     if (merch.length > 0) {
-      products = merch;
-      renderAPIProducts(merch);
+      products = sortProducts(merch);
+      renderAPIProducts(products);
       return;
     }
   } catch(e) {
@@ -476,35 +501,29 @@ function renderCart() {
 }
 
 // =====================
-// CALLS
+// CALLS (Coming Soon)
 // =====================
 function setupCalls() {
   const wrap = $('#callOptions');
   const calls = window.DP?.calls || [];
   if (!calls.length) return;
   calls.forEach((call, i) => {
-    const tier = document.createElement('div'); tier.className = 'call-tier';
+    const tier = document.createElement('div'); tier.className = 'call-tier call-tier-disabled';
     tier.innerHTML = `
       ${i === 1 ? `<span class="call-tier-tag">${t('calls.tag')}</span>` : ''}
       <div>
         <p class="call-tier-name">${call.label} ${t('calls.videoCall')}</p>
         <p class="call-tier-price">${call.price || ''}</p>
       </div>
-      <button class="btn btn-accent btn-sm tier-buy">${t('calls.book')}</button>`;
+      <button class="btn btn-accent btn-sm tier-buy" disabled>${t('calls.unavailable')}</button>`;
     wrap.appendChild(tier);
-    const btn = tier.querySelector('.tier-buy');
-    FW.getProduct(call.slug).then(p => {
-      const v = p.variants?.[0];
-      if (v) {
-        tier.querySelector('.call-tier-price').textContent = fmt(v.unitPrice);
-        btn.addEventListener('click', async () => {
-          btn.textContent = t('modal.adding'); btn.disabled = true;
-          try { await FW.addToCart(v.id); await refreshCart(); openCart(); }
-          catch(e) { console.error(e); }
-          btn.textContent = t('calls.book'); btn.disabled = false;
-        });
-      }
-    }).catch(() => { btn.style.opacity = '.4'; btn.style.cursor = 'default'; });
+  });
+}
+
+function updateCallTierButtons() {
+  document.querySelectorAll('.tier-buy').forEach(btn => {
+    btn.textContent = t('calls.unavailable');
+    btn.disabled = true;
   });
 }
 
