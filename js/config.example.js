@@ -14,10 +14,10 @@ window.DP = {
   // Products matching these slugs appear first, in this order.
   // Any remaining products appear after in their default API order.
   productOrder: [
-    'un-video-mas',
     'kingofohio',
-    'don-pollo-tshirt',
     'team-don-pollo-shirt',
     'mug',
+    'un-video-mas',
+    'don-pollo-tshirt',
   ],
 };

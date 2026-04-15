@@ -165,12 +165,12 @@ img { max-width: 100%; display: block; }
   border-top: 2.5px solid var(--text);
   border-bottom: 2.5px solid var(--text);
 }
-.marquee-inner { display: inline-flex; animation: mq 14s linear infinite; }
+.marquee-inner { display: inline-flex; white-space: nowrap; }
 .marquee-inner span {
   font-family: var(--display); font-size: .55rem;
   letter-spacing: 2px; color: var(--accent); padding: 0 18px;
+  flex-shrink: 0;
 }
-@keyframes mq { to { transform: translateX(-50%); } }
 
 /* ============ MERCH ============ */
 .merch { padding: 72px 0 80px; }

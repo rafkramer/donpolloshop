@@ -54,7 +54,7 @@ const I18N = {
     'nav.shop': 'Tienda',
     'nav.calls': 'Llamadas',
     'hero.title': 'DON POLLO<br>SHOP',
-    'hero.sub': 'Los drops de merch oficial ya est\u00E1n aqu\u00ED. Rep la marca, verse fire.',
+    'hero.sub': 'El merch oficial ya lleg\u00F3. P\u00F3ntelo y que se note.',
     'hero.btn.shop': 'Comprar',
     'hero.btn.call': 'Llamadas \u2014 Pr\u00F3ximamente',
     'marquee.merch': 'MERCH NUEVO',
@@ -172,15 +172,12 @@ let showingAll = false;
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
-const COLORS = ['#c62828','#1a1816','#f0ece6','#e84416','#1b3a5c','#333'];
-
 const PLACEHOLDERS = [
-  { name: 'Don Pollo Tee — Red', price: 32, bg: '#c62828', fg: '#fff' },
   { name: 'Classic Tee — Black', price: 30, bg: '#1a1816', fg: '#fff' },
   { name: 'Classic Tee — Cream', price: 30, bg: '#f0ece6', fg: '#1a1816' },
-  { name: 'Don Pollo Tee — Orange', price: 32, bg: '#e84416', fg: '#fff' },
   { name: 'Logo Tee — Navy', price: 30, bg: '#1b3a5c', fg: '#fff' },
   { name: 'Don Pollo Tee — Charcoal', price: 30, bg: '#333', fg: '#aaa' },
+  { name: 'Don Pollo Tee — Orange', price: 32, bg: '#e84416', fg: '#fff' },
 ];
 
 function teeSVG(fg) {
@@ -265,23 +262,6 @@ function renderAPIProducts(items) {
         <p class="p-card-price">${fmt(price)}</p>
       </div>`;
     card.addEventListener('click', () => openModal(p));
-    grid.appendChild(card);
-  });
-  const need = Math.max(0, 6 - items.length);
-  PLACEHOLDERS.slice(0, need).forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'p-card';
-    card.innerHTML = `
-      <div class="p-card-img">
-        <div class="p-card-ph" style="background:${p.bg}">
-          ${teeSVG(p.fg)}
-          <span style="color:${p.fg}">DON POLLO</span>
-        </div>
-      </div>
-      <div class="p-card-body">
-        <p class="p-card-name">${p.name}</p>
-        <p class="p-card-price">$${p.price}</p>
-      </div>`;
     grid.appendChild(card);
   });
   grid.querySelectorAll('.p-card').forEach((c, i) => {
@@ -540,18 +520,27 @@ document.addEventListener('click', e => {
 });
 
 // =====================
-// REVIEW SCROLLER
+// INFINITE SCROLLERS
 // =====================
-(function initReviewScroll() {
-  const track = document.querySelector('.reviews-track');
-  if (!track) return;
-  const cards = track.children;
-  if (!cards.length) return;
+function initScroller(track, speed) {
+  if (!track || !track.children.length) return;
   requestAnimationFrame(() => {
+    const origItems = Array.from(track.children);
+    const viewW = track.parentElement.offsetWidth;
+    // Clone items until we have at least 2x the viewport width
+    while (track.scrollWidth < viewW * 3) {
+      origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+    }
     const half = track.scrollWidth / 2;
+    const name = 'scroll-' + Math.random().toString(36).slice(2, 8);
     const style = document.createElement('style');
-    style.textContent = `@keyframes rev-scroll { from { transform: translateX(0); } to { transform: translateX(-${half}px); } }`;
+    style.textContent = `@keyframes ${name} { from { transform: translateX(0); } to { transform: translateX(-${half}px); } }`;
     document.head.appendChild(style);
-    track.style.animation = 'rev-scroll 25s linear infinite';
+    track.style.animation = `${name} ${speed}s linear infinite`;
   });
+}
+
+(function initScrollers() {
+  initScroller(document.querySelector('#marqueeTrack'), 18);
+  initScroller(document.querySelector('.reviews-track'), 30);
 })();
