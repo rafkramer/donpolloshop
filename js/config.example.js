@@ -2,7 +2,7 @@
 // For GitHub Pages deployment, set FOURTHWALL_TOKEN as a repository secret.
 window.DP = {
   token: 'FOURTHWALL_TOKEN_HERE',
-  checkout: 'donpolloshop.com',
+  checkout: 'mindmush-shop.fourthwall.com',
   currency: 'USD',
   calls: [
     { slug: '5min-call-with-don-pollo', label: '5 min', price: '$20' },

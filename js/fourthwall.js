@@ -41,6 +41,6 @@ const FW = (() => {
       return post(`/carts/${id}/add`, { items: [{ variantId: vid, quantity: qty }] });
     },
     removeFromCart: (vid) => { const id = cid(); if (!id) return; return post(`/carts/${id}/remove`, { items: [{ variantId: vid }] }); },
-    checkoutUrl: () => { const id = cid(); if (!id) return null; return `https://${c.checkout}/checkout/?cartCurrency=${c.currency || 'USD'}&cartId=${id}`; },
+    checkoutUrl: () => { const id = cid(); if (!id) return null; return `https://${c.checkout}/cart/checkout?cartId=${id}&currency=${c.currency || 'USD'}`; },
   };
 })();
