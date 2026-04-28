@@ -12,10 +12,60 @@
 </head>
 <body>
 
+  <div class="landing" id="landing">
+    <button class="landing-lang lang-switch" id="landingLang" data-lang="en" aria-label="Switch language">
+      <span class="lang-opt" data-lang="en">&#x1F1FA;&#x1F1F8;</span>
+      <span class="lang-opt" data-lang="es">&#x1F1EA;&#x1F1F8;</span>
+      <span class="lang-slider"></span>
+    </button>
+    <div class="landing-inner">
+      <div class="landing-head">
+        <img src="assets/images/crown.png" alt="" class="landing-crown">
+        <h1 class="landing-title">DON POLLO</h1>
+        <p class="landing-sub" data-i18n="landing.sub">Pick your move</p>
+      </div>
+      <div class="landing-choices">
+        <button class="landing-card landing-card-primary" id="landingShop" type="button">
+          <div class="landing-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <h2 class="landing-card-title" data-i18n="landing.shop.title">Enter Shop</h2>
+          <p class="landing-card-desc" data-i18n="landing.shop.desc">Official merch. Tees, mugs, fits.</p>
+          <span class="landing-card-cta" data-i18n="landing.shop.cta">Shop Merch &rarr;</span>
+        </button>
+        <a class="landing-card landing-card-cameo" id="landingCameo" href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer">
+          <div class="landing-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <h2 class="landing-card-title" data-i18n="landing.cameo.title">Get a Cameo</h2>
+          <p class="landing-card-desc" data-i18n="landing.cameo.desc">Personalized shoutout from Don Pollo.</p>
+          <span class="landing-card-cta" data-i18n="landing.cameo.cta">Book on Cameo &rarr;</span>
+        </a>
+        <button class="landing-card landing-card-soon" id="landingCalls" type="button">
+          <span class="landing-soon-tag" data-i18n="landing.soon">Coming Soon</span>
+          <div class="landing-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.91.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h2 class="landing-card-title" data-i18n="landing.calls.title">Book a Call</h2>
+          <p class="landing-card-desc" data-i18n="landing.calls.desc">1-on-1 video call with Don Pollo.</p>
+          <span class="landing-card-cta" data-i18n="landing.calls.cta">Learn more &rarr;</span>
+        </button>
+      </div>
+      <p class="landing-foot">
+        <a href="terms.html" class="landing-foot-link" data-i18n="footer.terms">Terms</a>
+        <span>&middot;</span>
+        <a href="privacy.html" class="landing-foot-link" data-i18n="footer.privacy">Privacy</a>
+        <span>&middot;</span>
+        <a href="refunds.html" class="landing-foot-link" data-i18n="footer.refund">Refunds</a>
+      </p>
+    </div>
+  </div>
+
   <nav class="nav">
-    <a href="#" class="nav-logo"><img src="assets/images/crown.png" alt="" class="nav-crown">DON POLLO SHOP</a>
+    <a href="#" class="nav-logo" id="navHome"><img src="assets/images/crown.png" alt="" class="nav-crown">DON POLLO SHOP</a>
     <div class="nav-right">
       <a href="#merch" class="nav-link" data-i18n="nav.shop">Shop</a>
+      <a href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer" class="nav-link" data-i18n="nav.cameo">Cameo</a>
       <a href="#calls" class="nav-link" data-i18n="nav.calls">Calls</a>
       <button class="lang-switch" id="langSwitch" data-lang="en" aria-label="Switch language">
         <span class="lang-opt" data-lang="en">&#x1F1FA;&#x1F1F8;</span>
@@ -39,7 +89,7 @@
         <p class="hero-sub" data-i18n="hero.sub">Official merch drops are here. Rep the brand, look fire.</p>
         <div class="hero-btns">
           <a href="#merch" class="btn btn-accent" data-i18n="hero.btn.shop">Shop Now</a>
-          <a href="#calls" class="btn btn-ghost btn-dim" data-i18n="hero.btn.call">Calls &mdash; Coming Soon</a>
+          <a href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="hero.btn.cameo">Get a Cameo</a>
         </div>
       </div>
       <div class="hero-video">
@@ -50,7 +100,7 @@
 
   <div class="marquee">
     <div class="marquee-inner" id="marqueeTrack">
-      <span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.call">CALLS COMING SOON</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span>
+      <span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.cameo">CAMEO LIVE</span><span data-i18n="marquee.call">CALLS COMING SOON</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span>
     </div>
   </div>
 
@@ -137,7 +187,7 @@
       <div class="foot-top">
         <span class="foot-name">DON POLLO SHOP</span>
         <span>&middot;</span>
-        <a href="mailto:hello@donpolloshop.com" class="foot-link">hello@donpolloshop.com</a>
+        <a href="mailto:contact@mindmush.com" class="foot-link">contact@mindmush.com</a>
       </div>
       <div class="foot-legal">
         <a href="terms.html" class="foot-link" data-i18n="footer.terms">Terms of Service</a>

@@ -7,14 +7,28 @@
 // =====================
 const I18N = {
   en: {
+    'landing.sub': 'Pick your move',
+    'landing.shop.title': 'Enter Shop',
+    'landing.shop.desc': 'Official merch. Tees, mugs, fits.',
+    'landing.shop.cta': 'Shop Merch \u2192',
+    'landing.cameo.title': 'Get a Cameo',
+    'landing.cameo.desc': 'Personalized shoutout from Don Pollo.',
+    'landing.cameo.cta': 'Book on Cameo \u2192',
+    'landing.calls.title': 'Book a Call',
+    'landing.calls.desc': '1-on-1 video call with Don Pollo.',
+    'landing.calls.cta': 'Learn more \u2192',
+    'landing.soon': 'Coming Soon',
     'nav.shop': 'Shop',
+    'nav.cameo': 'Cameo',
     'nav.calls': 'Calls',
     'hero.title': 'DON POLLO<br>SHOP',
     'hero.sub': 'Official merch drops are here. Rep the brand, look fire.',
     'hero.btn.shop': 'Shop Now',
+    'hero.btn.cameo': 'Get a Cameo',
     'hero.btn.call': 'Calls \u2014 Coming Soon',
     'marquee.merch': 'FRESH MERCH',
     'marquee.shop': 'DON POLLO SHOP',
+    'marquee.cameo': 'CAMEO LIVE',
     'marquee.call': 'CALLS COMING SOON',
     'marquee.drops': 'NEW DROPS',
     'marquee.rep': 'REP THE BRAND',
@@ -51,14 +65,28 @@ const I18N = {
     'rev.4': '"Don Pollo merch hits different. Best quality I\u2019ve bought online fr."',
   },
   es: {
+    'landing.sub': 'Elige tu ruta',
+    'landing.shop.title': 'Entrar a la Tienda',
+    'landing.shop.desc': 'Merch oficial. Camisetas, tazas, fits.',
+    'landing.shop.cta': 'Comprar Merch →',
+    'landing.cameo.title': 'Pedir un Cameo',
+    'landing.cameo.desc': 'Un saludo personalizado de Don Pollo.',
+    'landing.cameo.cta': 'Reservar en Cameo →',
+    'landing.calls.title': 'Reservar Llamada',
+    'landing.calls.desc': 'Videollamada 1 a 1 con Don Pollo.',
+    'landing.calls.cta': 'Más info →',
+    'landing.soon': 'Próximamente',
     'nav.shop': 'Tienda',
+    'nav.cameo': 'Cameo',
     'nav.calls': 'Llamadas',
     'hero.title': 'DON POLLO<br>SHOP',
     'hero.sub': 'El merch oficial ya lleg\u00F3. P\u00F3ntelo y que se note.',
     'hero.btn.shop': 'Comprar',
+    'hero.btn.cameo': 'Pedir un Cameo',
     'hero.btn.call': 'Llamadas \u2014 Pr\u00F3ximamente',
     'marquee.merch': 'MERCH NUEVO',
     'marquee.shop': 'DON POLLO SHOP',
+    'marquee.cameo': 'CAMEO DISPONIBLE',
     'marquee.call': 'LLAMADAS PR\u00D3XIMAMENTE',
     'marquee.drops': 'NUEVOS DROPS',
     'marquee.rep': 'REP LA MARCA',
@@ -126,6 +154,8 @@ function applyLanguage(lang) {
   });
   const sw = document.getElementById('langSwitch');
   if (sw) sw.dataset.lang = lang;
+  const lsw = document.getElementById('landingLang');
+  if (lsw) lsw.dataset.lang = lang;
   renderCart();
   updateCallTierText();
 }
@@ -188,6 +218,7 @@ function teeSVG(fg) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  setupLanding();
   setupVideo();
   setupCart();
   setupModal();
@@ -197,6 +228,64 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadProducts();
   await refreshCart();
 });
+
+// =====================
+// LANDING SPLASH
+// =====================
+function setupLanding() {
+  const landing = $('#landing');
+  if (!landing) return;
+
+  document.body.classList.add('landing-open');
+
+  $('#landingShop')?.addEventListener('click', () => closeLanding('top'));
+  $('#landingCalls')?.addEventListener('click', () => closeLanding('#calls'));
+  // Cameo card is an <a target="_blank"> — opens new tab; landing stays so they can come back.
+
+  const lsw = $('#landingLang');
+  if (lsw) {
+    lsw.addEventListener('click', e => {
+      e.stopPropagation();
+      const newLang = currentLang === 'en' ? 'es' : 'en';
+      applyLanguage(newLang);
+    });
+  }
+
+  $('#navHome')?.addEventListener('click', e => {
+    e.preventDefault();
+    showLanding();
+  });
+}
+
+function closeLanding(scrollTo) {
+  const landing = $('#landing');
+  if (!landing) return;
+  landing.classList.add('landing-hidden');
+  document.body.classList.remove('landing-open');
+  setTimeout(() => {
+    landing.style.display = 'none';
+    if (scrollTo === 'top') {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    } else if (scrollTo) {
+      const el = document.querySelector(scrollTo);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  }, 450);
+}
+
+function showLanding() {
+  const landing = $('#landing');
+  if (!landing) return;
+  landing.style.display = '';
+  window.scrollTo(0, 0);
+  requestAnimationFrame(() => {
+    landing.classList.remove('landing-hidden');
+    document.body.classList.add('landing-open');
+  });
+}
 
 // =====================
 // VIDEO

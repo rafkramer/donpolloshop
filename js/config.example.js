@@ -4,6 +4,7 @@ window.DP = {
   token: 'FOURTHWALL_TOKEN_HERE',
   checkout: 'mindmush-shop.fourthwall.com',
   currency: 'USD',
+  cameoUrl: 'https://www.cameo.com/2021donpollo',
   calls: [
     { slug: '5min-call-with-don-pollo', label: '5 min', price: '$20' },
     { slug: '10min-call-with-don-pollo', label: '10 min', price: '$30' },
