@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Don Pollo Shop</title>
   <meta name="description" content="Official Don Pollo merch. Fresh drops, fire designs. Rep the brand.">
-  <link rel="stylesheet" href="css/style.css?v=20260427b">
+  <link rel="stylesheet" href="css/style.css?v=20260609a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,13 +33,14 @@
           <p class="landing-card-desc" data-i18n="landing.shop.desc">Official merch. Tees, mugs, fits.</p>
           <span class="landing-card-cta" data-i18n="landing.shop.cta">Shop Merch &rarr;</span>
         </button>
-        <a class="landing-card landing-card-cameo" id="landingCameo" href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer">
+        <a class="landing-card landing-card-live" id="landingLive" href="https://www.youtube.com/live/Qw05Eb552h4" target="_blank" rel="noopener noreferrer">
+          <span class="landing-live-tag"><span class="live-dot"></span><span data-i18n="landing.live.tag">Live</span></span>
           <div class="landing-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
-          <h2 class="landing-card-title" data-i18n="landing.cameo.title">Get a Cameo</h2>
-          <p class="landing-card-desc" data-i18n="landing.cameo.desc">Personalized shoutout from Don Pollo.</p>
-          <span class="landing-card-cta" data-i18n="landing.cameo.cta">Book on Cameo &rarr;</span>
+          <h2 class="landing-card-title" data-i18n="landing.live.title">Watch Live</h2>
+          <p class="landing-card-desc" data-i18n="landing.live.desc">Don Pollo is streaming on YouTube right now.</p>
+          <span class="landing-card-cta" data-i18n="landing.live.cta">Watch Now &rarr;</span>
         </a>
         <button class="landing-card landing-card-soon" id="landingCalls" type="button">
           <span class="landing-soon-tag" data-i18n="landing.soon">Coming Soon</span>
@@ -65,7 +66,7 @@
     <a href="#" class="nav-logo" id="navHome"><img src="assets/images/crown.png" alt="" class="nav-crown">DON POLLO SHOP</a>
     <div class="nav-right">
       <a href="#merch" class="nav-link" data-i18n="nav.shop">Shop</a>
-      <a href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer" class="nav-link" data-i18n="nav.cameo">Cameo</a>
+      <a href="#live" class="nav-link nav-link-live" data-i18n="nav.live">Live</a>
       <a href="#calls" class="nav-link" data-i18n="nav.calls">Calls</a>
       <button class="lang-switch" id="langSwitch" data-lang="en" aria-label="Switch language">
         <span class="lang-opt" data-lang="en">&#x1F1FA;&#x1F1F8;</span>
@@ -89,7 +90,7 @@
         <p class="hero-sub" data-i18n="hero.sub">Official merch drops are here. Rep the brand, look fire.</p>
         <div class="hero-btns">
           <a href="#merch" class="btn btn-accent" data-i18n="hero.btn.shop">Shop Now</a>
-          <a href="https://www.cameo.com/2021donpollo" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="hero.btn.cameo">Get a Cameo</a>
+          <a href="#live" class="btn btn-ghost" data-i18n="hero.btn.live">Watch Live</a>
         </div>
       </div>
       <div class="hero-video">
@@ -98,9 +99,26 @@
     </div>
   </section>
 
+  <section class="live-section" id="live">
+    <div class="contain">
+      <a class="live-banner" href="https://www.youtube.com/live/Qw05Eb552h4" target="_blank" rel="noopener noreferrer">
+        <div class="live-banner-text">
+          <span class="live-badge"><span class="live-dot"></span><span data-i18n="live.badge">Live Now</span></span>
+          <h2 class="live-banner-title" data-i18n="live.title">Don Pollo is LIVE</h2>
+          <p class="live-banner-sub" data-i18n="live.sub">Catch the stream on YouTube right now.</p>
+        </div>
+        <span class="live-banner-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span data-i18n="live.btn">Watch Live</span>
+          <span class="live-banner-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <div class="marquee">
     <div class="marquee-inner" id="marqueeTrack">
-      <span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.cameo">CAMEO LIVE</span><span data-i18n="marquee.call">CALLS COMING SOON</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span>
+      <span data-i18n="marquee.merch">FRESH MERCH</span><span>&#x1F451;</span><span data-i18n="marquee.shop">DON POLLO SHOP</span><span data-i18n="marquee.live">WATCH LIVE</span><span data-i18n="marquee.call">CALLS COMING SOON</span><span data-i18n="marquee.drops">NEW DROPS</span><span data-i18n="marquee.rep">REP THE BRAND</span><span>&#x1F451;</span>
     </div>
   </div>
 
@@ -234,8 +252,8 @@
     </div>
   </div>
 
-  <script src="js/config.js?v=20260427b"></script>
-  <script src="js/fourthwall.js?v=20260427b"></script>
-  <script src="js/main.js?v=20260427b"></script>
+  <script src="js/config.js?v=20260609a"></script>
+  <script src="js/fourthwall.js?v=20260609a"></script>
+  <script src="js/main.js?v=20260609a"></script>
 </body>
 </html>
